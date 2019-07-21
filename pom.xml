@@ -12,6 +12,7 @@
     <module>strategy</module>
     <module>template-method</module>
     <module>adapter</module>
+    <module>bridge</module>
   </modules>
 
   <name>patterns</name>

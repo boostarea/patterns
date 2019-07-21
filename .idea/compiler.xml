@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="strategy" />
+        <module name="bridge" />
+        <module name="template-method" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
