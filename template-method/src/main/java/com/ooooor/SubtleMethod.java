@@ -22,19 +22,30 @@
  */
 package com.ooooor;
 
-
-import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
- * Application test
+ * SubtleMethod implementation of {@link StealingMethod}.
  *
  */
-public class AppTest {
+public class SubtleMethod extends StealingMethod {
 
-  @Test
-  public void test() {
-    String[] args = {};
-    App.main(args);
+  private static final Logger LOGGER = LoggerFactory.getLogger(SubtleMethod.class);
+
+  @Override
+  protected String pickTarget() {
+    return "shop keeper";
+  }
+
+  @Override
+  protected void confuseTarget(String target) {
+    LOGGER.info("Approach the {} with tears running and hug him!", target);
+  }
+
+  @Override
+  protected void stealTheItem(String target) {
+    LOGGER.info("While in close contact grab the {}'s wallet.", target);
   }
 }

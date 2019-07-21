@@ -22,31 +22,51 @@
  */
 package com.ooooor;
 
+import org.junit.jupiter.api.Test;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 /**
- * 
- * SubtleMethod implementation of {@link StealingMethod}.
+ * Date: 12/29/15 - 18:15 PM
  *
+ * @author Jeroen Meulemeester
  */
-public class SubtleMethod extends StealingMethod {
+public class HalflingThiefTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(SubtleMethod.class);
+  /**
+   * Verify if the thief uses the provided stealing method
+   */
+  @Test
+  public void testSteal() {
+    final StealingMethod method = mock(StealingMethod.class);
+    final HalflingThief thief = new HalflingThief(method);
 
-  @Override
-  protected String pickTarget() {
-    return "shop keeper";
+    thief.steal();
+    verify(method).steal();
+
+    verifyNoMoreInteractions(method);
   }
 
-  @Override
-  protected void confuseTarget(String target) {
-    LOGGER.info("Approach the {} with tears running and hug him!", target);
-  }
+  /**
+   * Verify if the thief uses the provided stealing method, and the new method after changing it
+   */
+  @Test
+  public void testChangeMethod() {
+    final StealingMethod initialMethod = mock(StealingMethod.class);
+    final HalflingThief thief = new HalflingThief(initialMethod);
 
-  @Override
-  protected void stealTheItem(String target) {
-    LOGGER.info("While in close contact grab the {}'s wallet.", target);
+    thief.steal();
+    verify(initialMethod).steal();
+
+    final StealingMethod newMethod = mock(StealingMethod.class);
+    thief.changeMethod(newMethod);
+
+    thief.steal();
+    verify(newMethod).steal();
+
+    verifyNoMoreInteractions(initialMethod, newMethod);
+
   }
 }

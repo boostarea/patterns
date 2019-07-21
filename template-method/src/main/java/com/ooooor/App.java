@@ -22,49 +22,26 @@
  */
 package com.ooooor;
 
-import org.junit.jupiter.api.Test;
-
-import static org.mockito.Mockito.*;
-
 /**
- * Date: 12/29/15 - 18:15 PM
- *
- * @author Jeroen Meulemeester
+ * 
+ * Template Method defines a skeleton for an algorithm. The algorithm subclasses provide
+ * implementation for the blank parts.
+ * <p>
+ * In this example {@link HalflingThief} contains {@link StealingMethod} that can be changed. First
+ * the thief hits with {@link HitAndRunMethod} and then with {@link SubtleMethod}.
+ * 
  */
-public class HalflingThiefTest {
+public class App {
 
   /**
-   * Verify if the thief uses the provided stealing method
+   * Program entry point
+   * 
+   * @param args command line args
    */
-  @Test
-  public void testSteal() {
-    final StealingMethod method = mock(StealingMethod.class);
-    final HalflingThief thief = new HalflingThief(method);
-
+  public static void main(String[] args) {
+    HalflingThief thief = new HalflingThief(new HitAndRunMethod());
     thief.steal();
-    verify(method).steal();
-
-    verifyNoMoreInteractions(method);
-  }
-
-  /**
-   * Verify if the thief uses the provided stealing method, and the new method after changing it
-   */
-  @Test
-  public void testChangeMethod() {
-    final StealingMethod initialMethod = mock(StealingMethod.class);
-    final HalflingThief thief = new HalflingThief(initialMethod);
-
+    thief.changeMethod(new SubtleMethod());
     thief.steal();
-    verify(initialMethod).steal();
-
-    final StealingMethod newMethod = mock(StealingMethod.class);
-    thief.changeMethod(newMethod);
-
-    thief.steal();
-    verify(newMethod).steal();
-
-    verifyNoMoreInteractions(initialMethod, newMethod);
-
   }
 }
