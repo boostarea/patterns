@@ -27,6 +27,9 @@ package com.ooooor;
  * for an adapter. Interfaces may be incompatible but the inner functionality should suit the need.
  * The Adapter design pattern allows otherwise incompatible classes to work together by converting
  * the interface of one class into an interface expected by the clients.
+ * 接口可能不兼容，但内部功能应该满足需求。
+ * 适配器模式通过转换其中一个类的对外接口，让两个不兼容的类能互相通信。
+ *
  *
  * <p>
  * There are two variations of the Adapter pattern: The class adapter implements the adaptee's
@@ -36,7 +39,8 @@ package com.ooooor;
  * <p>
  * The Adapter ({@link FishingBoatAdapter}) converts the interface of the adaptee class (
  * {@link FishingBoat}) into a suitable one expected by the client ( {@link RowingBoat} ).
- *
+ * 适配器 ({@link FishingBoatAdapter}) 转换待适配类 (
+ * {@link FishingBoat}) 去匹配用户所期望的接口形状 ( {@link RowingBoat} ).
  * <p>
  * The story of this implementation is this. <br>
  * Pirates are coming! we need a {@link RowingBoat} to flee! We have a {@link FishingBoat} and our
