@@ -18,6 +18,7 @@
     <module>abstract-factory</module>
     <module>factory-method</module>
     <module>factory-kit</module>
+    <module>flyweight</module>
   </modules>
 
   <name>patterns</name>
