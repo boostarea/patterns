@@ -19,6 +19,7 @@
     <module>factory-method</module>
     <module>factory-kit</module>
     <module>flyweight</module>
+    <module>proxy</module>
   </modules>
 
   <name>patterns</name>
